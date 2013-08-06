@@ -12,6 +12,8 @@ How to install it
 How to use it
 ==============
 
+    from tail_parser import Parser
+
     def demo1():
       logfd = tempfile.NamedTemporaryFile(mode='w')
       logfd.write("foo\n3\nbar\n4\n")
