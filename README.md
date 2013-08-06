@@ -1,7 +1,16 @@
 py-tailparser
 =============
 
+
 Simple python tail log parser
+
+How to install it
+==============
+
+    pip install https://github.com/ticapix/py-tailparser/archive/master.zip
+
+How to use it
+==============
 
     def demo1():
       logfd = tempfile.NamedTemporaryFile(mode='w')
