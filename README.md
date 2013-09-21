@@ -18,7 +18,7 @@ from tail_parser import Parser
 def demo1():
     # create temp file
     logfd = tempfile.NamedTemporaryFile(mode='w')
-    logfd.write("""foo\n3\nbar\n4\n")
+    logfd.write("foo\n3\nbar\n4\n")
     logfd.flush()
     # init parser
     parser = Parser(logfd.name)
