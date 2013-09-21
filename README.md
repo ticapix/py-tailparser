@@ -12,16 +12,24 @@ How to install it
 How to use it
 ==============
 
-    from tail_parser import Parser
+```python
+from tail_parser import Parser
 
-    def demo1():
-      logfd = tempfile.NamedTemporaryFile(mode='w')
-      logfd.write("foo\n3\nbar\n4\n")
-      logfd.flush()
-      parser = Parser(logfd.name)
-      arr = []
-      parser.register_regex("(?P<num>[0-9]+)", lambda line, num: arr.append(int(num) * int(num)))
-      parser.start()
-      time.sleep(1)
-      parser.stop()
-      assert arr == [9, 16]
+def demo1():
+    # create temp file
+    logfd = tempfile.NamedTemporaryFile(mode='w')
+    logfd.write("""foo\n3\nbar\n4\n")
+    logfd.flush()
+    # init parser
+    parser = Parser(logfd.name)
+    arr = []
+    # register regex + callback
+    parser.register_regex("(?P<num>[0-9]+)", lambda line, num: arr.append(int(num) * int(num)))
+    # start tailing the file
+    parser.start()
+    time.sleep(1)
+    # stop tailing the file
+    parser.stop()
+    # checking that the callbacks got called
+    assert arr == [9, 16]
+```
